@@ -84,6 +84,7 @@ void resume(struct schedule * S, int id)
 	case COROUTINE_SUSPEND:
 		co->status = COROUTINE_RUNNING;
 		S->running = id;
+		bzero(S->stack, sizeof(S->stack));
 		memcpy(S->stack + STACK_SIZE - co->size, co->stack, co->size);
 		swapcontext(&S->ctx, &co->ctx);
 		break;
