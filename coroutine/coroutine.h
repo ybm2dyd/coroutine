@@ -1,3 +1,10 @@
+/*************************************************************************
+> File Name: coroutine.cpp
+> Author: BangminYang
+> Mail: geraltyang@tencent.com
+> Created Time: Thu Sep 20 01:16:11 2018
+************************************************************************/
+
 #include <ucontext.h>
 
 #define COROUTINE_READY 0
@@ -35,11 +42,11 @@ struct coroutine
 
 struct schedule* coroutine_open();
 
-int new_coroutine(struct schedule** S, coroutine_func func, void* arg);
+int create(struct schedule* S, coroutine_func func, void* arg);
 
 int status(struct schedule* S, int id);
 
 void resume(struct schedule* S, int id);
 
-void yield(struct schedule* S, int id);
+void yield(struct schedule* S);
 
